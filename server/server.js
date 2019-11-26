@@ -1,9 +1,13 @@
 const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
+const stream = require('./stream')
+
+stream.connect()
 
 const app = express()
 app.use(cors())
+
 
 const jsonParser = bodyParser.json()
 app.use(jsonParser)
