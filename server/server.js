@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const stream = require('./stream')()
 const { models, db } = require('./mongo')
+const vehicleDataRoutes = require('./routes/vehicleData')
 
 const app = express()
 app.use(cors())
@@ -10,6 +11,9 @@ app.use(cors())
 
 const jsonParser = bodyParser.json()
 app.use(jsonParser)
+
+app.use('/vehicleData', vehicleDataRoutes)
+
 
 app.get('/', (req, res) => {
     res.status(200).send('API running!')
