@@ -8,12 +8,8 @@ const vehicleDataRoutes = require('./routes/vehicleData')
 const app = express()
 app.use(cors())
 
-
 const jsonParser = bodyParser.json()
 app.use(jsonParser)
-
-app.use('/vehicleData', vehicleDataRoutes)
-
 
 app.get('/', (req, res) => {
     res.status(200).send('API running!')
@@ -29,3 +25,5 @@ db().then(async () => {
         console.log(`Listen on PORT: ${port}`)
     })
 })
+
+app.use(vehicleDataRoutes)
