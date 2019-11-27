@@ -1,8 +1,15 @@
 require('dotenv').config()
 
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+const vehicle = require('./schemas/vehicle')
 
-const db = mongoose.connection;
-db.on('error', error => console.error('Connection error: ' + error))
-db.once('open', () => console.error('Connected to Mongoose'))
+const db = () => {
+    return mongoose.connect(process.env.DATABASE_URL, { 
+        useNewUrlParser: true,
+        useUnifiedTopology: true 
+    })
+}
+
+const models = { vehicle }
+
+module.exports = { models, db }

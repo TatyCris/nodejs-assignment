@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const vehicleDataSchema = new mongoose.Schema({
+const vehicleSchema = new mongoose.Schema({
     time: Number,
     energy: Number,
     gps: [],
     odo: Number,
     speed: Number,
     soc: Number
-});
+})
 
-const vehicleData = mongoose.model("VehicleData", vehicleDataSchema);
+const vehicleData = mongoose.model("VehicleData", vehicleSchema)
 
-module.exports = vehicleData; 
+module.exports = vehicleData
