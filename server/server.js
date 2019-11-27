@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const stream = require('./stream')
 const { models, db } = require('./mongo')
 const vehicleDataRoutes = require('./routes/vehicleData')
+const webSocket = require('./webSocket')
 
 const app = express()
 app.use(cors())
@@ -27,3 +28,28 @@ db().then(async () => {
 })
 
 app.use(vehicleDataRoutes)
+// webSocket()
+// app.use(webSocket)
+
+/////
+
+
+
+
+
+// const url = 'wss://localhost:8080'
+// const connection = new WebSocket(url)
+// // const socket = new WebSocket('ws://localhost:8080');
+
+
+// connection.onopen = () => {
+//   connection.send('hey') 
+// }
+
+// connection.onerror = (error) => {
+//   console.log(`WebSocket error: ${error}`)
+// }
+
+// connection.onmessage = (e) => {
+//   console.log(e.data)
+// }
