@@ -6,8 +6,8 @@
   "scripts": {
     "start-nats": "sh ./start-nats",
     "start-broadcast": "node vehicle-data-generator/index.js",
-    "start-server": "node server/server.js",
-    "devStart-server": "nodemon server/server.js"
+    "start-server": "node src/server.js",
+    "devStart-server": "nodemon src/server.js"
   },
   "author": "",
   "license": "ISC",
