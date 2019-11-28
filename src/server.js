@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const stream = require('./stream')
 const { models, db } = require('./mongo')
-const vehicleDataRoutes = require('./routes/vehicleData')
+const vehicleDataRoutes = require('./rest-api/routes/vehicleData')
 const webSocket = require('./webSocket')
 
 const app = express()

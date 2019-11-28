@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const mongoose = require('mongoose')
-const vehicle = require('./schemas/vehicle')
+const vehicle = require('./rest-api/schemas/vehicle')
 
 const db = () => {
     return mongoose.connect(process.env.DATABASE_URL, { 
