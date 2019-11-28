@@ -8,7 +8,7 @@ const connect = (vehicleModel) => {
     })
 
     nats.subscribe('vehicle.test-bus-1', (data) => {
-        console.log('Data', data)
+        // console.log('Data', data)
         addToDatabase(data)
     })
 

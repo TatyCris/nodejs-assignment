@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const stream = require('./stream')
 const { models, db } = require('./mongo')
 const vehicleDataRoutes = require('./rest-api/routes/vehicleData')
-const webSocket = require('./webSocket-api/webSocket')
 
 const app = express()
 app.use(cors())
@@ -24,7 +23,6 @@ db().then(async () => {
         }
         stream(models.vehicle)
         console.log(`Listen on PORT: ${port}`)
-        webSocket()
     })
 })
 
