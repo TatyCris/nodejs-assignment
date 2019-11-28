@@ -24,32 +24,8 @@ db().then(async () => {
         }
         stream(models.vehicle)
         console.log(`Listen on PORT: ${port}`)
+        webSocket()
     })
 })
 
 app.use(vehicleDataRoutes)
-// webSocket()
-// app.use(webSocket)
-
-/////
-
-
-
-
-
-// const url = 'wss://localhost:8080'
-// const connection = new WebSocket(url)
-// // const socket = new WebSocket('ws://localhost:8080');
-
-
-// connection.onopen = () => {
-//   connection.send('hey') 
-// }
-
-// connection.onerror = (error) => {
-//   console.log(`WebSocket error: ${error}`)
-// }
-
-// connection.onmessage = (e) => {
-//   console.log(e.data)
-// }

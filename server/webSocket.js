@@ -1,9 +1,20 @@
 const WebSocket = require('ws')
-const wss = new WebSocket.Server({ port: 8080 })
+const Vehicle = require('./schemas/vehicle')
 
-wss.on('connection', ws => {
-    ws.on('message', message => {
-        console.log(`Received message => ${message}`)
+const connect = () => {
+    const wss = new WebSocket.Server({ port: 8080 })
+
+    wss.on('connection', ws => {
+        ws.on('message', message => {
+            console.log(`Received message => ${message}`)
+        })
+    
+        Vehicle
+            .find()
+            .then(res => {
+                ws.send(JSON.stringify(res))
+            }) 
     })
-    ws.send('WebSocket is connected!')
-})
+}
+
+module.exports = connect
