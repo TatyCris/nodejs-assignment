@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const stream = require('./stream')
 const { models, db } = require('./mongo')
 const vehicleDataRoutes = require('./rest-api/routes/vehicleData')
-const webSocket = require('./webSocket')
+const webSocket = require('./webSocket-api/webSocket')
 
 const app = express()
 app.use(cors())

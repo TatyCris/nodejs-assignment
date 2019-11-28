@@ -1,5 +1,5 @@
 const WebSocket = require('ws')
-const Vehicle = require('./rest-api/schemas/vehicle')
+const Vehicle = require('../rest-api/schemas/vehicle')
 
 const connect = () => {
     const wss = new WebSocket.Server({ port: 8080 })
