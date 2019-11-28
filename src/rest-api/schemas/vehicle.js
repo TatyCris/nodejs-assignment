@@ -9,6 +9,4 @@ const vehicleSchema = new mongoose.Schema({
     soc: Number
 })
 
-const vehicleData = mongoose.model("VehicleData", vehicleSchema)
-
-module.exports = vehicleData
+module.exports = mongoose.model("VehicleData", vehicleSchema)
