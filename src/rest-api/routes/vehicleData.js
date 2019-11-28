@@ -1,14 +1,8 @@
 const express = require('express')
-const router = express.Router()
-const Vehicle = require('../schemas/vehicle')
+const { getVehiclesData } = require('../controllers/get-vehiclesData')
 
-router.get('/vehicleData', async (req, res) => {
-    try {
-        const vehicleData = await Vehicle.find()
-        res.json(vehicleData)
-    } catch (err) {
-        res.status(500).json({ message: err.message })
-    }
-})
+const router = express.Router()
+
+router.get('/vehicleData', getVehiclesData)
 
 module.exports = router
