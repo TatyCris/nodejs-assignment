@@ -3,7 +3,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const db = require('../../dataBase/mongo')
 const vehicleDataRoutes = require('./routes')
-// const dataByIdRoutes = require('./routes')
 
 const app = express()
 
@@ -25,6 +24,5 @@ db().then(async () => {
 })
 
 app.use(vehicleDataRoutes)
-// app.use(dataByIdRoutes)
 
 module.exports = app
