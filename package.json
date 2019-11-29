@@ -2,12 +2,12 @@
   "name": "nodejs-assignment",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/stream/server.js",
   "scripts": {
     "start-nats": "sh ./start-nats",
     "start-mongodb": "sh ./start-mongodb",
     "start-broadcast": "node vehicle-data-generator/index.js",
-    "start-server": "node src/server.js",
+    "start-server": "node src/stream/server.js",
     "devStart-server": "nodemon src/server.js",
     "test": "jest"
   },
