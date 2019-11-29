@@ -2,7 +2,7 @@ const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
 const stream = require('./stream')
-const { models, db } = require('./mongo')
+const { models, db } = require('./dataBase/mongo')
 const vehicleDataRoutes = require('./rest-api/routes/vehicleData')
 
 const app = express()
