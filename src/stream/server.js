@@ -23,6 +23,6 @@ db().then(async () => {
             throw new Error('Internal Server Error')
         }
         stream(Vehicle)
-        console.log(`Listen on PORT: ${port}`)
+        console.log(`stream listen on PORT: ${port}`)
     })
 })

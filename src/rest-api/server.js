@@ -13,13 +13,12 @@ app.get('/', (req, res) => {
 })
 
 const port = process.env.PORT_REST_API || 7000
-console.log('ENV', process.env.PORT_REST_API)
 db().then(async () => {
     app.listen(port, (error) => {
         if (error) {
             throw new Error('Internal Server Error')
         }
-        console.log(`Listen on PORT: ${port}`)
+        console.log(`Api listen on PORT: ${port}`)
     })
 })
 

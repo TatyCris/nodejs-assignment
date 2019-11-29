@@ -7,8 +7,9 @@
     "start-nats": "sh ./start-nats",
     "start-mongodb": "sh ./start-mongodb",
     "start-broadcast": "node vehicle-data-generator/index.js",
-    "start-server": "node src/stream/server.js",
-    "devStart-server": "nodemon src/server.js",
+    "start-stream": "nodemon src/stream/server.js",
+    "start-api": "nodemon src/rest-api/server.js",
+    "start-websocket": "nodemon src/webSocket-api/server.js",
     "test": "jest"
   },
   "jest": {

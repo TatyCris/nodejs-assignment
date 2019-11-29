@@ -18,7 +18,7 @@ db().then(async () => {
         if (error) {
             throw new Error('Internal Server Error')
         }
-        console.log(`Listen on PORT: ${port}`)
+        console.log(`WebSocket listen on PORT: ${port}`)
         wss.on('connection', ws => {
             ws.on('message', message => {
                 console.log(`SERVER SIDE - [Received] ${message}`)
