@@ -8,7 +8,14 @@
     "start-mongodb": "sh ./start-mongodb",
     "start-broadcast": "node vehicle-data-generator/index.js",
     "start-server": "node src/server.js",
-    "devStart-server": "nodemon src/server.js"
+    "devStart-server": "nodemon src/server.js",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +30,8 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "nodemon": "^2.0.1"
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.1",
+    "supertest": "^4.0.2"
   }
 }
