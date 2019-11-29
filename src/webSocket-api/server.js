@@ -7,7 +7,7 @@ const db = require('../dataBase/mongo')
 const app = express()
 const server = http.createServer(app)
 const wss = new WebSocket.Server({ server })
-const port = 5000
+const port = process.env.PORT_WEBSOCKET_API || 5000
 
 app.get('/', (req, res) => {
     res.status(200).send('WebSocket running!')

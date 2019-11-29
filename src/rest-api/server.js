@@ -12,7 +12,8 @@ app.get('/', (req, res) => {
     res.status(200).send('API running!')
 })
 
-const port = process.env.PORT || 6000
+const port = process.env.PORT_REST_API || 7000
+console.log('ENV', process.env.PORT_REST_API)
 db().then(async () => {
     app.listen(port, (error) => {
         if (error) {
