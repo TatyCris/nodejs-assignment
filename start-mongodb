@@ -1,0 +1,9 @@
+#!/bin/bash
+
+clear
+
+echo "Cleaning up docker containers"
+docker rm -f mongodb
+echo "Starting mongodb" && \
+docker run -d -p 27017:27017 --name mongodb mongo
+echo "mongodb started!"

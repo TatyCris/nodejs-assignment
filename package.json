@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-nats": "sh ./start-nats",
+    "start-mongodb": "sh ./start-mongodb",
     "start-broadcast": "node vehicle-data-generator/index.js",
     "start-server": "node src/server.js",
     "devStart-server": "nodemon src/server.js"
