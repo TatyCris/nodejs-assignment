@@ -2,7 +2,8 @@ const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
 const stream = require('./stream')
-const { models, db } = require('./dataBase/mongo')
+const db = require('./dataBase/mongo')
+const Vehicle = require('./dataBase/schemas/vehicle')
 const vehicleDataRoutes = require('./rest-api/routes/vehicleData')
 
 const app = express()
@@ -21,7 +22,7 @@ db().then(async () => {
         if (error) {
             throw new Error('Internal Server Error')
         }
-        stream(models.vehicle)
+        stream(Vehicle)
         console.log(`Listen on PORT: ${port}`)
     })
 })
