@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const vehicleSchema = new mongoose.Schema({
+const vehicleSchemaTest = new mongoose.Schema({
     time: Number,
     energy: Number,
     gps: [],
