@@ -2,38 +2,15 @@
   "name": "nodejs-assignment",
   "version": "1.0.0",
   "description": "",
-  "main": "src/stream/server.js",
+  "main": "index.js",
   "scripts": {
     "start-nats": "sh ./start-nats",
-    "start-mongodb": "sh ./start-mongodb",
-    "start-broadcast": "node vehicle-data-generator/index.js",
-    "start-stream": "nodemon src/stream/server.js",
-    "start-api": "nodemon src/rest-api/server.js",
-    "start-websocket": "nodemon src/webSocket-api/server.js",
-    "test": "jest"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
+    "start-broadcast": "node vehicle-data-generator/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
     "csv-parse": "^3.2.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.7.12",
-    "nats": "^1.3.2",
-    "ws": "^7.2.0"
-  },
-  "devDependencies": {
-    "@shelf/jest-mongodb": "^1.1.3",
-    "dotenv": "^8.2.0",
-    "jest": "^24.9.0",
-    "nodemon": "^2.0.1",
-    "supertest": "^4.0.2"
+    "nats": "^1.3.2"
   }
 }
