@@ -12,17 +12,18 @@ const vehicleData = {
 
 describe('Vehicle Model Test', () => {
 
-    beforeAll(async () => {
-        await mongoose.connect(process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+    beforeAll(async (done) => {
+        await mongoose.connect(process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, (err) => {
             if (err) {
                 console.error(err);
                 process.exit(1);
             }
         });
+        done();
     });
 
     // Test Schema
-    it('create & save vehicle data successfully', async () => {
+    it('create & save vehicle data successfully', async (done) => {
         const validVehicle = new VehicleModel(vehicleData);
         const savedVehicle = await validVehicle.save();
         expect(savedVehicle._id).toBeDefined();
@@ -32,11 +33,12 @@ describe('Vehicle Model Test', () => {
         expect(savedVehicle.odo).toBe(vehicleData.odo);
         expect(savedVehicle.speed).toBe(vehicleData.speed);
         expect(savedVehicle.soc).toBe(vehicleData.soc);
+        done();
     });
 
     // Test Validation
     // You shouldn't be able to add in any field that isn't defined in the schema
-    it('insert vehicle data successfully, but the field does not defined in schema should be undefined', async () => {
+    it('insert vehicle data successfully, but the field does not defined in schema should be undefined', async (done) => {
         const vehicleWithInvalidField = new VehicleModel({
             vehicle: 'test-bus-1',
             time: 1511512585495,
@@ -49,5 +51,6 @@ describe('Vehicle Model Test', () => {
         const savedVehicleWithInvalidField = await vehicleWithInvalidField.save();
         expect(savedVehicleWithInvalidField._id).toBeDefined();
         expect(savedVehicleWithInvalidField.nickkname).toBeUndefined();
+        done();
     });
 })

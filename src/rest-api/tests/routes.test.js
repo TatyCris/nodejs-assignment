@@ -26,7 +26,7 @@ describe('GET /vehicles', () => {
 // Testing get a especific data endpoint by giving an id
 describe('GET /:id', () => {
     beforeEach(async () => {
-        VehicleModel.remove({}, (err) => { });
+        VehicleModel.deleteMany({}, (err) => { });
     });
 
     it('respond with json containing a single data object', async (done) => {
