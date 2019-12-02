@@ -2,7 +2,7 @@ require('dotenv').config()
 const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
-const db = require('../dataBase/mongo')
+const db = require('./mongo')
 const vehicleDataRoutes = require('./routes/vehicleData')
 
 const app = express()
