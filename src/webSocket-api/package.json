@@ -1,0 +1,25 @@
+{
+  "name": "web_socket-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client-webSocket.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "jest"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "ws": "^7.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
