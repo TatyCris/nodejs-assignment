@@ -1,8 +1,8 @@
 const express = require('express')
 const http = require('http')
 const WebSocket = require('ws')
-const Vehicle = require('../dataBase/schemas/vehicle')
-const db = require('../dataBase/mongo')
+const Vehicle = require('./schemas/vehicles')
+const db = require('./mongo')
 
 const app = express()
 const server = http.createServer(app)

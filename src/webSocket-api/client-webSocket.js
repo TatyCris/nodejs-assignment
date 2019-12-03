@@ -1,3 +1,4 @@
+require('dotenv').config()
 const WebSocket = require('ws')
 const url = `http://localhost:${process.env.PORT_WEBSOCKET_API}` || 'http://localhost:5000'
 const connection = new WebSocket(url)
