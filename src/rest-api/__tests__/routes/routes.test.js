@@ -1,6 +1,6 @@
 const request = require('supertest')
 const app = require('./server')
-const VehicleModel = require('../../dataBase/tests/vehicleSchemaTest')
+const VehicleModel = require('../../schemas/vehicle')
 
 const newVehicleData = new VehicleModel({
     _id: "5de10ccf1690810d278f7a74",
@@ -13,29 +13,34 @@ const newVehicleData = new VehicleModel({
 })
 
 // Testing get all vehicles endpoint
-describe('GET /vehicles', () => {
-    it('respond with json containing a list of all vehicles', async (done) => {
+describe('GET /api/vehicles', () => {
+    it('respond with json containing a list of all vehicles', () => {
+        // console.log('llega aqui')
         request(app)
-            .get('/vehicles')
+            .get('/api/vehicles')
+            // .then(res => console.log('TATY RES', res))
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
-            .expect(200, done);
+            .expect(200);
     });
 });
 
 // Testing get a especific data endpoint by giving an id
 describe('GET /:id', () => {
-    beforeEach(async () => {
-        VehicleModel.deleteMany({}, (err) => { });
-    });
-
-    it('respond with json containing a single data object', async (done) => {
-        const savedVehicle = await newVehicleData.save();
+    it('respond with json containing a single data object', () => {
+        newVehicleData.save();
 
         request(app)
-            .get('/5de10ccf1690810d278f7a74')
+            .get('/api/5de10ccf1690810d278f7a74')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
-            .expect(200, done);
+            .expect(200);
+    });
+
+    afterEach(() => {
+        VehicleModel.deleteOne({ _id: "5de10ccf1690810d278f7a74" }, (err) => {
+            if (err) throw err;
+            console.log("1 document deleted");
+        });
     });
 });
