@@ -6,10 +6,14 @@ services:
     ports:
       - "27017:27017"
   rest-api:
+    container_name: rest-api
+    restart: always
     build: ./src/rest-api
     hostname: rest-api
     env_file: ./src/rest-api/.env
     ports:
       - 4000:7000
+    volumes:
+      - ./src/rest-api:/rest-api
     links:
       - mongo

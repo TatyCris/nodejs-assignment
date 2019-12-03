@@ -1,11 +1,17 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 
+// const uri = process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017' //
+const uri = 'mongodb://mongo:27017/restapi' //connect to the mongo container exposed port 27017
+
 const db = () => {
-    const uri = process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017'
-    return mongoose.connect( uri, { 
-        useNewUrlParser: true
-    }, () => { console.log("Mongo is connected")}).catch(err => console.log(err))
+    return mongoose
+        .connect(
+            uri,
+            { useNewUrlParser: true, useUnifiedTopology: true }
+        )
+        .then(() => console.log("Mongo is connected"))
+        .catch(err => console.log(err))
 }
 
-module.exports =  db
+module.exports = db
