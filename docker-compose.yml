@@ -44,6 +44,20 @@ services:
       - nats
     networks:
     - backend
+  websocket:
+    container_name: websocket
+    restart: always
+    build: ./src/webSocket-api
+    hostname: websocket
+    env_file: ./src/webSocket-api/.env
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src/webSocket-api:/websocket
+    links:
+      - mongo
+    networks:
+      - backend
 
 networks:
   backend:
