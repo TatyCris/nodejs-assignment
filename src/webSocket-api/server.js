@@ -30,7 +30,7 @@ db().then(async () => {
                     ws.send(JSON.stringify(res))
                 })
 
-            ws.send('WebSocket is connected!')
+            // ws.send('WebSocket is connected!')
         })
     })
 })
