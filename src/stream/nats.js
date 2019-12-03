@@ -1,7 +1,8 @@
 const NATS = require('nats')
 
+const uri = 'nats://nats:4222'
 const connect = (vehicleModel) => {
-    const nats = NATS.connect({ json: true })
+    const nats = NATS.connect(uri, { json: true })
 
     nats.on('connect', () => {
         console.log('NATS is online!')

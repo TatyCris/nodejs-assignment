@@ -5,6 +5,15 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    networks:
+      - backend
+  nats:
+    container_name: nats
+    image: nats
+    ports:
+      - "4222:4222"
+    networks:
+      - backend
   rest-api:
     container_name: rest-api
     restart: always
@@ -12,8 +21,29 @@ services:
     hostname: rest-api
     env_file: ./src/rest-api/.env
     ports:
-      - 4000:7000
+      - 7000:7000
     volumes:
       - ./src/rest-api:/rest-api
     links:
       - mongo
+    networks:
+    - backend
+  stream:
+    container_name: stream
+    restart: always
+    build: ./src/stream
+    hostname: stream
+    env_file: ./src/stream/.env
+    ports:
+      - 4000:4000
+    volumes:
+      - ./src/stream:/stream
+    links:
+      - mongo
+    depends_on:
+      - nats
+    networks:
+    - backend
+
+networks:
+  backend:
