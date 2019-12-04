@@ -1,8 +1,7 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 
-// const uri = process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017' //
-const uri = 'mongodb://mongo:27017/vehicles' //connect to the mongo container exposed port 27017
+const uri = process.env.DATABASE_URL || 'mongodb://mongo:27017/vehicles' //
 
 const db = () => {
     return mongoose
