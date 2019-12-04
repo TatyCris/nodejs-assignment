@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     res.status(200).send('Stream running!')
 })
 
-const port = process.env.PORT_STREAM_API || 4000
+const port = process.env.PORT_STREAM || 4000
 
 db().then(async () => {
     app.listen(port, (error) => {

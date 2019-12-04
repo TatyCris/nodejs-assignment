@@ -1,6 +1,8 @@
+require('dotenv').config()
 const NATS = require('nats')
 
-const uri = 'nats://nats:4222'
+const uri = process.env.NATS_URL_STREAM === 'nodocker' ? '' : 'nats://nats:4222'
+
 const connect = (vehicleModel) => {
     const nats = NATS.connect(uri, { json: true })
 

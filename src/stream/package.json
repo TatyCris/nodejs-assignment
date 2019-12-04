@@ -5,7 +5,8 @@
   "main": "nats.js",
   "scripts": {
     "test": "jest --detectOpenHandles --watch",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start-mongodb": "sh ./start-mongodb"
   },
   "keywords": [],
   "author": "",
