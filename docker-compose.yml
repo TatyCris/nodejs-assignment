@@ -19,7 +19,6 @@ services:
     restart: always
     build: ./src/rest-api
     hostname: rest-api
-    env_file: ./src/rest-api/.env
     ports:
       - 7000:7000
     volumes:
@@ -33,7 +32,6 @@ services:
     restart: always
     build: ./src/stream
     hostname: stream
-    env_file: ./src/stream/.env
     ports:
       - 4000:4000
     volumes:
@@ -49,7 +47,6 @@ services:
     restart: always
     build: ./src/webSocket-api
     hostname: websocket
-    env_file: ./src/webSocket-api/.env
     ports:
       - 5000:5000
     volumes:
