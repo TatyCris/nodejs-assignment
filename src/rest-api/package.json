@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "jest --detectOpenHandles --watch",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start-mongodb": "sh ./start-mongodb"
   },
   "jest": {
     "testEnvironment": "node",
