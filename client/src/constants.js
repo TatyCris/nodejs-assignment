@@ -1,0 +1,1 @@
+export const dataBaseUrl = 'http://localhost:7000'

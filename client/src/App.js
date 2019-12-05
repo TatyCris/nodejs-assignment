@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import { Route } from "react-router-dom"
 import './App.css';
+import Database from './components/Database';
 
 export default class App extends Component {
   baseUrl = 'http://localhost:4000'
@@ -12,7 +13,7 @@ export default class App extends Component {
       <div className="App">
         <main className="App-main">
           {/* <Route exact path="/" component={} /> */}
-
+          <Database />
         </main>
       </div>
     )
