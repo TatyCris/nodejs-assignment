@@ -1,7 +1,7 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 
-const uri = process.env.DATABASE_URL || 'mongodb://mongo:27017/vehicles'
+const uri = process.env.DATABASE_URL || 'mongodb://mongo0:27017,mongo1:27017,mongo2:27017/vehicles'
 
 const db = () => {
     return mongoose

@@ -1,10 +1,48 @@
 version: "3.3"
 services:
-  mongo:
-    container_name: mongo
+  mongo0:
+    hostname: mongo0
+    container_name: mongo0
     image: mongo
     ports:
       - "27017:27017"
+    command: /usr/bin/mongod --bind_ip_all --replSet rs0 --shardsvr --port 27017
+    networks:
+      - backend
+  mongo1:
+    hostname: mongo1
+    container_name: mongo1
+    image: mongo
+    ports:
+      - "27018:27017"
+    command: /usr/bin/mongod --bind_ip_all --replSet rs0 --shardsvr --port 27017
+    networks:
+      - backend
+  mongo2:
+    hostname: mongo2
+    container_name: mongo2
+    image: mongo
+    ports:
+      - "27019:27017"
+    command: /usr/bin/mongod --bind_ip_all --replSet rs0 --shardsvr --port 27017
+    networks:
+      - backend
+  mongo-rs0-setup:
+    container_name: mongo-rs0-setup
+    image: mongo
+    ports:
+      - "27020:27017"
+    entrypoint: ["./mongo-rs0-setup.sh"]
+    volumes:
+      - ./mongo-rs0-setup.sh:/mongo-rs0-setup.sh
+    links:
+      - mongo0
+      - mongo1
+      - mongo2
+    depends_on:
+      - mongo0
+      - mongo1
+      - mongo2
     networks:
       - backend
   nats:
@@ -24,9 +62,9 @@ services:
     volumes:
       - ./src/rest-api:/rest-api
     links:
-      - mongo
+      - mongo0
     networks:
-    - backend
+      - backend
   stream:
     container_name: stream
     restart: always
@@ -37,11 +75,11 @@ services:
     volumes:
       - ./src/stream:/stream
     links:
-      - mongo
+      - mongo0
     depends_on:
       - nats
     networks:
-    - backend
+      - backend
   websocket:
     container_name: websocket
     restart: always
@@ -52,7 +90,7 @@ services:
     volumes:
       - ./src/webSocket-api:/websocket
     links:
-      - mongo
+      - mongo0
     networks:
       - backend
 
