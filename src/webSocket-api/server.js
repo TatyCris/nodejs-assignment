@@ -30,7 +30,11 @@ db().then(async () => {
                     ws.send(JSON.stringify(res))
                 })
 
-            // ws.send('WebSocket is connected!')
+            Vehicle
+                .watch()
+                .on('change', change => {
+                    ws.send(JSON.stringify(change.fullDocument))
+                })
         })
     })
 })
