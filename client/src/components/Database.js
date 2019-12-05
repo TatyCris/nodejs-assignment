@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import  { connect } from 'react-redux'
 import { getVehicles } from '../actions/vehicles'
+import CanvasGraph from './Graph'
 
 class Database extends Component {
     componentDidMount() {
@@ -11,6 +12,7 @@ class Database extends Component {
         return (
             <div>
                 Hello World!!!
+                <CanvasGraph />
             </div>
         )
     }
