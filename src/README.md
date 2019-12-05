@@ -54,8 +54,8 @@ In order to demonstrate this project please do the following:
 1. Inside the stream service create a .env file and set it to:
     ```
     PORT_STREAM=4000
-    NATS_URL_STREAM=nodocker
-    DATABASE_URL=mongodb://127.0.0.1:27017
+    NATS_URL_STREAM=nats://127.0.0.1:4222
+    DATABASE_URL=mongodb://127.0.0.1:27017/vehicles
     ```
 1. Inside the stream service run ```$ npm run start-mongodb``` then ```$ npm start```.
 You should keep this terminal open and receive a message saying:
@@ -67,7 +67,7 @@ You should keep this terminal open and receive a message saying:
 1. Inside the webSocket-api service create a .env file and set it to: 
     ```
     PORT_WEBSOCKET_API=5000
-    DATABASE_URL=mongodb://127.0.0.1:27017
+    DATABASE_URL=mongodb://127.0.0.1:27017/vehicles
     ```
 1. In other terminal inside the webSocket-api service run ```$ npm start```.
 You should keep this terminal open and receive a message saying:
@@ -77,7 +77,7 @@ You should keep this terminal open and receive a message saying:
 
 1. Inside the rest-api service create a .env file and set it to:
     ```
-    DATABASE_URL=mongodb://127.0.0.1:27017
+    DATABASE_URL=mongodb://127.0.0.1:27017/vehicles
     PORT_REST_API=7000
     ```
 1. In other terminal inside the webSocket-api service run ```$ npm start```.
