@@ -5,24 +5,26 @@ import './Graph.css'
 export default class Graph extends Component {
   render() {
     const dataXY = this.props.data.map(res => {
-      if (res.time < 1.5) {
-        // console.log('time error', res)
+      if (res.time === null) {
+        // console.log('error data', res)
       }
       return {
         x: res.time,
         y: res.speed
       }
     })
-    // console.log('props', dataXY)
+
     return (
       <XYPlot
-        width={800}
+        width={1000}
         height={300}
+        xType="time"
+        title="database service"
       >
         <VerticalGridLines />
         <HorizontalGridLines />
-        <XAxis title="X" />
-        <YAxis title="Y" />
+        <XAxis title="h"/>
+        <YAxis title="km/h" />
         <LineSeries
           data={dataXY}
           style={{ strokeWidth: 2 }}
