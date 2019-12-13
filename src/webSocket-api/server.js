@@ -13,6 +13,20 @@ app.get('/', (req, res) => {
     res.status(200).send('WebSocket running!')
 })
 
+app.get('/live', (req, res) => {
+    let live = `
+    const socket = new WebSocket('ws://localhost:5000')
+    socket.onopen = () => {
+        Vehicle
+            .watch()
+            .on('change', change => {
+                socket.send(JSON.stringify(change.fullDocument))
+            })
+    }`
+    res.set('Content-Type', 'application/javascript')
+    res.status(200).send(live)
+})
+
 db().then(async () => {
     server.listen(port, (error) => {
         if (error) {
