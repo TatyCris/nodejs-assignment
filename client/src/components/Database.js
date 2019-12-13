@@ -26,6 +26,7 @@ const Database = () => {
         <div>
             <span>Database service</span>
             <Graph data={veiclesData} />
+            {hasError && <span>Has error: {JSON.stringify(hasError)}</span>}
         </div>
     )
 }
