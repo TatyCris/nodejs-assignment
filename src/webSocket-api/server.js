@@ -20,7 +20,7 @@ app.get('/live', (req, res) => {
         Vehicle
             .watch()
             .on('change', change => {
-                socket.send(JSON.stringify(change.fullDocument))
+                socket.send(change.fullDocument)
             })
     }`
     res.set('Content-Type', 'application/javascript')
