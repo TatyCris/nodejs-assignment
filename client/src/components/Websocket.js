@@ -7,20 +7,24 @@ const WebsocketApi = () => {
     const [hasWebsocketError, setWebsocketErrors] = useState(false)
     const [websocketData, setWebsocketData] = useState([])
 
-    const ws = new WebSocket(`${websocketUrl}/live`)
+    useEffect(() => {
+        const ws = new WebSocket(`${websocketUrl}/live`)
+        
+        // ws.onopen = () => {
+        //     ws.send('Open connection')
+        // }
 
-    ws.onopen = () => {
-        ws.send('Open connection')
-    }
-
-    // connection.onerror = (error) => {
-    //     console.log(error)
-    // }
-
-    ws.onmessage = (e) => {
-        console.log(e.data)
-        setWebsocketData(e.data)
-    }
+        ws.onmessage = (e) => {
+            //e.data is a string of a data object {}
+            // console.log(JSON.parse(e.data))
+            // console.log('typeof e data', typeof JSON.parse(e.data), JSON.parse(e.data), JSON.parse(e.data).length )
+            setWebsocketData(JSON.parse(e.data))
+        }
+        
+        ws.onerror = (error) => {
+            setWebsocketErrors('error: ' + error)
+        }
+    })
 
     return (
         <div>
