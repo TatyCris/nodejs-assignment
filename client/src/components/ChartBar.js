@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { HorizontalBar } from 'react-chartjs-2'
 
-
 export default class ChartBar extends Component {
     render() {
-        const {currentSpeed, barLabel, dataLegend} = this.props
+        const {x, barLabel, dataLegend} = this.props
         const data = {
             labels: [barLabel],
             datasets: [
@@ -15,7 +14,7 @@ export default class ChartBar extends Component {
                     borderWidth: 1,
                     hoverBackgroundColor: 'rgba(255,99,132,0.4)',
                     hoverBorderColor: 'rgba(255,99,132,1)',
-                    data: [currentSpeed, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+                    data: [x, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
                 }
             ]
         }

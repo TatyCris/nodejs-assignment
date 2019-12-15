@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import WebSocket from 'isomorphic-ws' 
 import ChartBar from './ChartBar'
 import { websocketUrl } from '../constants'
+import ChartLine from "./ChartLine"
 
 const WebsocketApi = () => {
     const [hasWebsocketError, setWebsocketErrors] = useState(false)
@@ -26,7 +27,10 @@ const WebsocketApi = () => {
     return (
         <div>
             <span>Websocket service</span>
-            <ChartBar currentSpeed={websocketData.speed} barLabel={'Current Speed'} dataLegend={'km/h'} />
+            <ChartBar x={websocketData.speed} barLabel={'Current Speed'} dataLegend={'km/h'} />
+            <ChartBar x={websocketData.soc} barLabel={'State of Charge'} dataLegend={'%'} />
+            <ChartLine label={'Speed Profile'} y={websocketData.speed} x={websocketData.time} />
+            <ChartLine label={'State of Charge Profile'} y={websocketData.soc} x={websocketData.time} />
             {/* {hasWebsocketError && <span>Has error: {hasWebsocketError}</span>} */}
         </div>
     )
