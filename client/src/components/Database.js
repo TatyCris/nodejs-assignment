@@ -1,7 +1,7 @@
-import * as request from 'superagent'
-import { dataBaseUrl } from '../constants'
 import React, { useState, useEffect } from "react"
-import Graph from './Graph'
+import * as request from 'superagent'
+import ChartLine from "./ChartLine"
+import { dataBaseUrl } from '../constants'
 
 const Database = () => {
     const [hasError, setErrors] = useState(false)
@@ -20,13 +20,18 @@ const Database = () => {
         }
 
         fetchData()
-    })
+    }, [])
+
+    const times = veiclesData.map(res => new Date(res.time).toLocaleTimeString())
+    const speeds = veiclesData.map(res => res.speed)
+    const statesOfCharge = veiclesData.map(res => res.soc)
 
     return (
         <div>
             <span>Database service</span>
-            <Graph data={veiclesData} />
-            {hasError && <span>Has error: {JSON.stringify(hasError)}</span>}
+            <ChartLine label={'Speed Profile'} y={speeds} x={times} />
+            <ChartLine label={'State of Charge Profile'} y={statesOfCharge} x={times} />
+            {/* {hasError && <span>Has error: {JSON.stringify(hasError)}</span>} */}
         </div>
     )
 }
