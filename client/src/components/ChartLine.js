@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2'
 
 export default class ChartLine extends Component {
     y = []
@@ -39,7 +39,7 @@ export default class ChartLine extends Component {
                     data: this.y
                 }
             ]
-        };
+        }
         return (
             <div>
                 <Line data={data} />

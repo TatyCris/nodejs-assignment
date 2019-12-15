@@ -5,14 +5,14 @@ import { dataBaseUrl } from '../constants'
 
 const Database = () => {
     const [hasError, setErrors] = useState(false)
-    const [veiclesData, setVeiclesData] = useState([])
+    const [vehiclesData, setVehiclesData] = useState([])
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const res = await request(`${dataBaseUrl}/vehicles`)
                 const data = res.body
-                setVeiclesData(data)
+                setVehiclesData(data)
             }
             catch (error) {
                 setErrors(error)
@@ -22,9 +22,9 @@ const Database = () => {
         fetchData()
     }, [])
 
-    const times = veiclesData.map(res => new Date(res.time).toLocaleTimeString())
-    const speeds = veiclesData.map(res => res.speed)
-    const statesOfCharge = veiclesData.map(res => res.soc)
+    const times = vehiclesData.map(res => new Date(res.time).toLocaleTimeString())
+    const speeds = vehiclesData.map(res => res.speed)
+    const statesOfCharge = vehiclesData.map(res => res.soc)
 
     return (
         <div>
