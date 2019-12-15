@@ -20,7 +20,7 @@ app.get('/live', (req, res) => {
         Vehicle
             .watch()
             .on('change', change => {
-                socket.send(change.fullDocument)
+                socket.send(JSON.stringify(change.fullDocument))
             })
     }`
     res.set('Content-Type', 'application/javascript')
@@ -37,12 +37,6 @@ db().then(async () => {
             ws.on('message', message => {
                 console.log(`SERVER SIDE - [Received] ${message}`)
             })
-
-            Vehicle
-                .find()
-                .then(res => {
-                    ws.send(JSON.stringify(res))
-                })
 
             Vehicle
                 .watch()
