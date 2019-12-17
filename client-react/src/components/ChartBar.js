@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { HorizontalBar } from 'react-chartjs-2'
-// import 'chartjs-plugin-datalabels'
 
 export default class ChartBar extends Component {
     render() {
-        const { x, chartTitle, dataLegend } = this.props
+        const { x, dataLegend } = this.props
         const data = {
             labels: [''],
             datasets: [
@@ -16,11 +15,6 @@ export default class ChartBar extends Component {
                     hoverBackgroundColor: 'rgb(124, 163, 99)',
                     hoverBorderColor: 'rgb(97, 126, 78)',
                     data: [x, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-
-                    // barPercentage: 0.5,
-                    // barThickness: 'flex',
-                    // maxBarThickness: ,
-                    // minBarLength: 1,
                 }
             ],
         }
@@ -29,35 +23,22 @@ export default class ChartBar extends Component {
                 position: 'bottom',
                 align: 'end',
             },
-            // title: {
-            //     display: true,
-            //     text: chartTitle,
-            //     fontSize: 15,
-            //     lineHeight: 2
-            // },
             scales: {
                 xAxes: [{
                     gridLines: {
                         display: true,
-                        // drawBorder: false,
-                        // offsetGridLines: true,
-                        // color: 'red'
-                    },
-                    // display: false,
+                    }
                 }],
                 yAxes: [{
                     gridLines: {
                         display: true,
-                        // color: 'green',
-                        // offsetGridLines: false
-                    },
-                    // display: false,
+                        drawTicks: false,
+                    }
                 }]
             },
         }
         return (
-            <div>
-                {/* // <div style={{"height" : "600px", "width" : "600px"}}> */}
+            <div className="chartBar-container">
                 <HorizontalBar data={data} height={90} width={500} options={options} />
             </div>
         )

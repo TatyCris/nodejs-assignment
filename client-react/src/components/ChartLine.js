@@ -79,7 +79,7 @@ export default class ChartLine extends Component {
         }
         return (
             <div>
-                <Line data={data} height={200} width={500} options={options} />
+                <Line data={data} height={170} width={700} options={options} />
             </div>
         )
     }
