@@ -7,13 +7,18 @@ export default class ChartLine extends Component {
     render() {
         const {label, y, x} = this.props
 
-        if (typeof this.props.x !== 'object' && typeof this.props.y !== 'object') {
-            this.y = [...this.y, y]
-            this.x = [...this.x, new Date(x).toLocaleTimeString()]
+        if (x === null || y === null) {
+            console.log('null', x, y)
         } else {
-            this.y = y
-            this.x = x
+            if (typeof this.props.x !== 'object' && typeof this.props.y !== 'object') {
+                this.y = [...this.y, y]
+                this.x = [...this.x, new Date(x).toLocaleTimeString()]
+            } else {
+                this.y = y
+                this.x = x
+            }
         }
+
         const data = {
             labels: this.x,
             datasets: [
