@@ -33,9 +33,9 @@ const WebsocketApi = () => {
             <p className="chartTitle">State of Charge</p>
             <ChartBar x={websocketData.soc} chartTitle={'State of Charge'} dataLegend={'%'} />
             <p className="chartTitle">Speed Profile</p>
-            <ChartLine label={'Speed Profile'} y={websocketData.speed} x={websocketData.time} />
+            <ChartLine yLabelString={'Speed (km/h)'} y={websocketData.speed} x={websocketData.time} />
             <p className="chartTitle">State of Charge Profile</p>
-            <ChartLine label={'State of Charge Profile'} y={websocketData.soc} x={websocketData.time} />
+            <ChartLine yLabelString={'SoC (%)'} y={websocketData.soc} x={websocketData.time} />
             {/* {hasWebsocketError && <span>Has error: {hasWebsocketError}</span>} */}
         </div>
     )

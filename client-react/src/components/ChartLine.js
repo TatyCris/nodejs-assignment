@@ -5,7 +5,7 @@ export default class ChartLine extends Component {
     y = []
     x = []
     render() {
-        const {label, y, x} = this.props
+        const {yLabelString, y, x} = this.props
 
         if (x === null || y === null) {
             console.log('null', x, y)
@@ -23,31 +23,63 @@ export default class ChartLine extends Component {
             labels: this.x,
             datasets: [
                 {
-                    label,
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: 'rgba(75,192,192,0.4)',
-                    borderColor: 'rgba(75,192,192,1)',
+                    backgroundColor: 'rgba(124, 163, 99, 0.4)',
+                    borderColor: 'rgba(97, 126, 78, 1)',
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: 'rgba(75,192,192,1)',
-                    pointBackgroundColor: '#fff',
                     pointBorderWidth: 1,
                     pointHoverRadius: 5,
-                    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                    pointHoverBackgroundColor: 'rgba(124, 163, 99, 1)',
                     pointHoverBorderColor: 'rgba(220,220,220,1)',
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: this.y
+                    data: this.y,
                 }
             ]
         }
+        const options = {
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: true,
+                        drawOnChartArea: false,
+                        drawTicks: false
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time'
+                    },
+                    ticks: {
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: true,
+                        drawOnChartArea: false,
+                        drawTicks: false
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: yLabelString
+                    },
+                    ticks: {
+                        display: false
+                    }
+                }]
+            }
+        }
         return (
             <div>
-                <Line data={data} />
+                <Line data={data} height={200} width={500} options={options} />
             </div>
         )
     }
