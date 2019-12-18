@@ -3,8 +3,8 @@ import ReactMapGL, { Marker, FlyToInterpolator } from 'react-map-gl'
 
 const Map = ({ latitude, longitude }) => {
     const [viewport, setViewport] = useState({
-        width: 400,
-        height: 400,
+        width: 430,
+        height: 430,
         latitude: 52.3740311,
         longitude: 4.8896899,
         zoom: 8

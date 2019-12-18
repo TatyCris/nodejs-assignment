@@ -27,18 +27,40 @@ const WebsocketApi = () => {
 
     }, [])
 
-    return (
-        <div>
-            <div className="chartBar-card">
-                <p className="chartTitle">Current Speed</p>
-                <ChartBar x={websocketData.speed} dataLegend={'km/h'} />
-                <p className="chartTitle">State of Charge</p>
-                <ChartBar x={websocketData.soc} dataLegend={'%'} />
+    const renderChartBar = () => {
+        return (
+            <div className="chartBar">
+                <div className="card">
+                    <p className="chartTitle">Current Speed</p>
+                    <ChartBar x={websocketData.speed} dataLegend={'km/h'} />
+                </div>
+                <div className="card">
+                    <p className="chartTitle">State of Charge</p>
+                    <ChartBar x={websocketData.soc} dataLegend={'%'} />
+                </div>
+                {renderNonChartInfoContainer()}
             </div>
-            <div className="map-card">
-                <Map latitude={websocketData.gps && websocketData.gps[0]} longitude={websocketData.gps && websocketData.gps[1]} />
+        )
+    }
+
+    const renderChartLine = () => {
+        return (
+            <div className="chartLine">
+                <div className="card">
+                    <p className="chartTitle">Speed Profile</p>
+                    <ChartLine yLabelString={'Speed (km/h)'} y={websocketData.speed} x={websocketData.time} />
+                </div>
+                <div className="card">
+                    <p className="chartTitle">State of Charge Profile</p>
+                    <ChartLine yLabelString={'SoC (%)'} y={websocketData.soc} x={websocketData.time} />
+                </div>
             </div>
-            <div className="non-chart-info-container">
+        )
+    }
+
+    const renderNonChartInfoContainer = () => {
+        return (
+            <div className="non-chart-info-container card">
                 <div className="non-chart-info-box">
                     <p className="chartTitle">Energy</p>
                     <p className="chart-info">{websocketData.energy}</p>
@@ -47,13 +69,23 @@ const WebsocketApi = () => {
                     <p className="chartTitle">Odometer</p>
                     <p className="chart-info">{websocketData.odo}</p>
                 </div>
+                <div className="non-chart-info-box">
+                    <p className="chartTitle">Last Update</p>
+                    {websocketData.time && <p className="chart-info">{new Date(websocketData.time).toLocaleString()}</p>}
+                </div>
             </div>
-            <div className="chartLine-card">
-                <p className="chartTitle">Speed Profile</p>
-                <ChartLine yLabelString={'Speed (km/h)'} y={websocketData.speed} x={websocketData.time} />
-                <p className="chartTitle">State of Charge Profile</p>
-                <ChartLine yLabelString={'SoC (%)'} y={websocketData.soc} x={websocketData.time} />
+        )
+    }
+
+    return (
+        <div>
+            <div className="box">
+                <div className="map-card">
+                    <Map latitude={websocketData.gps && websocketData.gps[0]} longitude={websocketData.gps && websocketData.gps[1]} />
+                </div>
+                {renderChartBar()}
             </div>
+            {renderChartLine()}
         </div>
     )
 }

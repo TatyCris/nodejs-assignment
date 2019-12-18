@@ -4,6 +4,7 @@
 
 .App-main {
   /* background-color: #282c34; */
+  padding: 30px 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,8 +14,25 @@
   /* color: white; */
 }
 
+.App-menu {
+  height: 50px;
+  /* background-color: #666; */
+  background-color: #a3c3b4;
+  margin: 0;
+  position: relative;
+}
+
+.ham-menu-icon {
+  height: 30px;
+  width: 30px;
+  left: 0;
+  position: absolute;
+  left: 2%;
+  top: 15%;
+}
+
 p {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 label {
