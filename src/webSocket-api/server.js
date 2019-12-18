@@ -41,7 +41,9 @@ db().then(async () => {
             Vehicle
                 .watch()
                 .on('change', change => {
-                    ws.send(JSON.stringify(change.fullDocument))
+                    const gpsStrings = change.fullDocument.gps[0].split('|')
+                    const gpsNumbers = gpsStrings.map(str => parseFloat(str))
+                    ws.send(JSON.stringify({...change.fullDocument, gps: gpsNumbers}))
                 })
         })
     })
