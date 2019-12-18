@@ -31,6 +31,11 @@
   top: 15%;
 }
 
+.ham-menu-icon:hover {
+  cursor: pointer;
+  filter: invert(100%);
+}
+
 p {
   font-size: 14px;
 }

@@ -16,15 +16,15 @@
 }
 
 .chart-info {
-  color: "#666";
+  color:rgb(102, 102, 102);
 }
 
 .non-chart-info-container {
   display: flex;
+  justify-content: space-around;
 }
 
 .non-chart-info-box {
-  margin-right: 70px;
   height: 100px;
 }
 
