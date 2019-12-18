@@ -27,11 +27,6 @@ const WebsocketApi = () => {
 
     }, [])
 
-    const splitGpsToArray = (gps) => {
-        const gpsString = gps.split('|')
-        return gpsString.map(str => parseInt(str))
-    }
-
     return (
         <div>
             <div className="chartBar-card">
@@ -41,7 +36,7 @@ const WebsocketApi = () => {
                 <ChartBar x={websocketData.soc} dataLegend={'%'} />
             </div>
             <div className="map-card">
-                <Map latitude={websocketData.gps && splitGpsToArray(websocketData.gps[0])[0]} longitude={websocketData.gps && splitGpsToArray(websocketData.gps[0])[1]} />
+                <Map latitude={websocketData.gps && websocketData.gps[0]} longitude={websocketData.gps && websocketData.gps[1]} />
             </div>
             <div className="non-chart-info-container">
                 <div className="non-chart-info-box">

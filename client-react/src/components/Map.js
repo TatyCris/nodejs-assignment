@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import ReactMapGL, { Marker } from 'react-map-gl'
+import ReactMapGL, { Marker, FlyToInterpolator } from 'react-map-gl'
 
 const Map = ({ latitude, longitude }) => {
     const [viewport, setViewport] = useState({
@@ -11,9 +11,8 @@ const Map = ({ latitude, longitude }) => {
     })
 
     useEffect(() => {
-        console.log('gps', latitude, longitude);
         if (latitude || longitude) {
-            setViewport({ ...viewport, latitude, longitude })
+            setViewport({ ...viewport, latitude, longitude, zoom: 10, transitionDuration: 1500, transitionInterpolator: new FlyToInterpolator() })
         }
     }, [latitude, longitude])
 
@@ -36,7 +35,6 @@ const Map = ({ latitude, longitude }) => {
                 : null
             }
         </ReactMapGL>
-
     )
 }
 
