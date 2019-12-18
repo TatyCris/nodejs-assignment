@@ -1,23 +1,28 @@
 .chartTitle {
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #666;
-    text-align: left;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #666;
+  text-align: left;
 }
 
 .chartBar-container canvas {
-    max-width: 500px;
+  max-width: 500px;
 }
 
 .chart-info {
-    color: '#666';
+  color: "#666";
 }
 
 .non-chart-info-container {
-    display: flex;
+  display: flex;
 }
 
 .non-chart-info-box {
-    margin-right: 150px;
-    height: 100px;
+  margin-right: 150px;
+  height: 100px;
+}
+
+.pin-icon {
+  width: 30px;
+  height: 30px;
 }

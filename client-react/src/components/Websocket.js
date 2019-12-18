@@ -3,6 +3,7 @@ import WebSocket from 'isomorphic-ws'
 import ChartBar from './ChartBar'
 import { websocketUrl } from '../constants'
 import ChartLine from "./ChartLine"
+import Map from './Map'
 import './styles.css'
 
 const WebsocketApi = () => {
@@ -23,7 +24,13 @@ const WebsocketApi = () => {
         ws.onerror = (error) => {
             setWebsocketErrors('error: ' + error)
         }
+
     }, [])
+
+    const splitGpsToArray = (gps) => {
+        const gpsString = gps.split('|')
+        return gpsString.map(str => parseInt(str))
+    }
 
     return (
         <div>
@@ -34,7 +41,7 @@ const WebsocketApi = () => {
                 <ChartBar x={websocketData.soc} dataLegend={'%'} />
             </div>
             <div className="map-card">
-
+                <Map latitude={websocketData.gps && splitGpsToArray(websocketData.gps[0])[0]} longitude={websocketData.gps && splitGpsToArray(websocketData.gps[0])[1]} />
             </div>
             <div className="non-chart-info-container">
                 <div className="non-chart-info-box">
