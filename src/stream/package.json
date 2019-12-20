@@ -4,7 +4,7 @@
   "description": "",
   "main": "nats.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --watch",
+    "test": "npm run start-mongodb && jest --detectOpenHandles --watch",
     "start": "nodemon server.js",
     "start-mongodb": "sh ./start-mongodb"
   },

@@ -13,9 +13,12 @@ const vehicleData = {
 describe('Vehicle Model Test', () => {
 
     beforeAll(async (done) => {
-        await mongoose.connect('mongodb://127.0.0.1:27017/tests', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, (err) => {
+        // const url = 'http://localhost:27017/tests'
+        const url = 'mongodb://127.0.0.1:27030/tests'
+        await mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, (err) => {
+            console.log('I could connect')
             if (err) {
-                console.error(err);
+                // console.error(err);
                 process.exit(1);
             }
         });
