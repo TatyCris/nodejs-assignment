@@ -2,7 +2,7 @@ require('dotenv').config()
 const WebSocket = require('ws')
 
 const port = process.env.PORT_WEBSOCKET_API || 5000
-const url = `http://localhost:${port}`
+const url = `http://localhost:${port}/live`
 const connection = new WebSocket(url)
  
 connection.onopen = () => {
