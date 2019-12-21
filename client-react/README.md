@@ -3,7 +3,7 @@ This is the front-end part of the microservices assignment representing the day 
 
 ## Table of contents
 - [Intro](#Intro)
-- [Used Technologies](#Technologies-used)
+- [Used Technologies](#Used-Technologies)
 - [Setup](#Setup)
 - [Create React App](#Create-React-App)
 
